@@ -74,16 +74,42 @@ class Driver{
                 scan.nextLine();
 
                 if(opcionInventario == 1){
-                    System.out.println("hola");
+                    System.out.println("\nIngrese el producto que desea agregar: ");
                     producto = scan.nextLine();
-                    System.out.println(producto);
                     col.Agregar(producto);
+                }
+                else if(opcionInventario == 2){
+                System.out.println("\nIngrese el producto que desea saber la categoría: ");
+                    producto = scan.nextLine();
+                    col.MostrarCategoria(producto);
+                }
+                else if(opcionInventario == 3){
+                    System.out.println("\nIngrese el producto que desea saber la categoría: ");
+                    producto = scan.nextLine();
+                    col.MostrarCantProducto(producto);
+                }
+                else if(opcionInventario==4){
+                    System.out.println("Ahora se mostrará la categoría, cantidad, de cada producto en su coleccion\n");
+                    col.MostrarColeccionCant();
+                    
+                }
+                else if(opcionInventario==5){
+                    System.out.println("Ahora se mostrará la categoría, de cada producto del inventario\n");
+                    col.MostrarInventario();
+                    
+                }
+                else if(opcionInventario==6){
+                    System.out.println("Ahora se mostrará la categoría, de cada producto en su coleccion\n");
+                    col.MostrarColeccion();
+                }
+                else{
+                    System.out.println("\nGracias por usar el prograrma!");
                 }
             }
 
         }
         else{
-            System.out.println("No se pudo empezar el programa debido a que no se encontró el archivo");
+            System.out.println("\nNo se pudo empezar el programa debido a que no se encontró el archivo");
         }
 
     }
