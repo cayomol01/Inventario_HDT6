@@ -2,7 +2,7 @@
 import java.util.*;
 
 class Creador {
-    
+    //Clase del método factory
     public Map<String,ArrayList<String>> Crear(int opcion){
         if(opcion == 1){
             return new HashMap<String,ArrayList<String>>();

@@ -28,6 +28,7 @@ public class Coleccion {
     }
 
 
+    //Verifica si el inventario contiene el producto que ingreso el usuario.
     public Boolean Contains(String value){
         contains = false;
         contador = 0;
@@ -51,6 +52,7 @@ public class Coleccion {
         
     }
 
+    //Agrega un nuevo producto al arrayList de productos encontrados en coleccion.
     public void Agregar(String producto){
         if(Contains(producto)){
             if(!coleccion.containsKey(key)){
@@ -69,11 +71,7 @@ public class Coleccion {
         }
     }
 
-    
-    public void Mostrar(int opcion, String producto){
-
-    }
-
+    //Muestra la categoría del producto 
     public void MostrarCategoria(String producto){
         terminado = false;
         for(int i = 0; i< keys.size(); i++){
@@ -93,6 +91,7 @@ public class Coleccion {
         }
     }
 
+    //Retorna la cantidad de un mismo articulo en la coleccion
     public int Cantidad(String producto){
         terminado = false;
         cantidad = 0;
@@ -100,6 +99,7 @@ public class Coleccion {
         
         while(!terminado && contador<keys.size()){
             contador2 = 0;
+            //Compara los keys y si un es igual al del inventario entonces revisa si ese producto ya está en coleccion y si si pues le suma uno a la cantidad
             while(!terminado && contador2<inventario.get(keys.get(contador)).size()){
                 if(inventario.get(keys.get(contador)).get(contador2).equals(producto)){
                     key = keys.get(contador);
@@ -121,6 +121,7 @@ public class Coleccion {
     } 
     
     public void MostrarCantProducto(String producto){
+        //Recorre el array que contiene los keys y los usa para comparar los keys del inventario y de esa manera extraer los valores de la cantidad del mismo articulo
         for(int i = 0; i<keys.size();i++){
             for(int j = 0; j<inventario.get(keys.get(i)).size(); j++){
                 if(inventario.get(keys.get(i)).get(j).equals(producto)){
@@ -138,14 +139,16 @@ public class Coleccion {
     public void MostrarColeccionCant(){
         temp = "";
         System.out.printf("%-10s %-20s %-20s", "CATEGORIA", "PRODUCTO", "CANTIDAD\n"); 
-        System.out.println();
-        Collections.sort(keyscoleccion);
+        System.out.println(); //Format
+        Collections.sort(keyscoleccion); //Orden alfabético de los keys
+        //Recorre los keys sin repetirse
         for(int i = 0; i<keyscoleccion.size(); i++){
             for(int j = 0; j<coleccion.get(keyscoleccion.get(i)).size(); j++){
+                //Si el valor anterior de key se parece a uno que ya hubó, se sale del for loop anidado
                 if(temp.equals(coleccion.get(keyscoleccion.get(i)).get(j))){
                     break;
                 }
-                else{
+                else{//Mostrar valores
                     System.out.printf("%-10s %-20s %-20s", keyscoleccion.get(i),coleccion.get(keyscoleccion.get(i)).get(j),Cantidad(coleccion.get(keyscoleccion.get(i)).get(j)));
                     System.out.println();
                     temp = coleccion.get(keyscoleccion.get(i)).get(j);
@@ -155,13 +158,16 @@ public class Coleccion {
         }
     }
 
+    //Muestra el inventario completo
     public void MostrarInventario(){
         temp = "";
         terminado = false;
         contador = 0;
-        
+        //Format
         System.out.printf("%-20s %-10s", "CATEGORIA", "PRODUCTO\n"); 
         System.out.println();
+    
+        //Creo una lista con todos los keys sin repetirse
         for(int i = 0; i<keys.size(); i++){
             if(keys2.size()>0){
                 if(!keys2.contains(keys.get(i))){
@@ -172,10 +178,14 @@ public class Coleccion {
                 keys2.add(keys.get(i));
             }
         }
+        //Hago sorto al array de keys para que estén en orden alfabético
         Collections.sort(keys2);
-        while(!terminado &&contador<keys2.size()){
+
+        //Comenzar un foor loop que se termina una vez 
+        while(contador<keys2.size()){
             contador2 = 0;
-            while(!terminado && contador2 < inventario.get(keys2.get(contador)).size()){
+            //Recorrer todos los keys ya sin repetirse y mostrar sus valores con printf
+            while(contador2 < inventario.get(keys2.get(contador)).size()){
                 if(temp.equals(inventario.get(keys2.get(contador)).get(contador2))){
                     break;
                 }
@@ -191,7 +201,10 @@ public class Coleccion {
         }
     }
 
+    //Muestra la coleccion completa sin la cantidad de cada objeto
     public void MostrarColeccion(){
+
+        //Es el mismo método que mostrarColeccionCant solo que sin imprimir la cantidad
         temp = "";
         System.out.printf("%-10s %-20s", "CATEGORIA", "PRODUCTO\n"); 
         System.out.println();
